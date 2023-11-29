@@ -17,7 +17,19 @@
     - name: Instalando Docker
       yum:
        name: docker-ce
-       state: present	
+       state: present
+    - name: Instalar python-pip
+      yum:
+       name: python-pip
+       state: present
+    - name: Instalar docker
+      pip:
+       name: docker
+       executable: pip2
+    - name: Instalar docker-compose
+      pip:
+       name: docker-compose
+       executable: pip	
     - name: Iniciando y Habilitando Docker
       service:
        name: docker

@@ -1,0 +1,7 @@
+---
+- name: Escalar la API en Kubernetes
+  hosts: produccion
+  
+  tasks: 
+    - name: Escalar replicas
+      command: kubectl scale deployment backend-deployment --replicas=3
