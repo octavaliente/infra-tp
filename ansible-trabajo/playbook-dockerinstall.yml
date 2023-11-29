@@ -25,7 +25,6 @@
     - name: Instalar docker
       pip:
        name: docker
-       executable: pip2
     - name: Instalar docker-compose
       pip:
        name: docker-compose
