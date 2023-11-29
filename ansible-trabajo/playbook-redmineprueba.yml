@@ -1,0 +1,16 @@
+- name: Instalar y correr redmine con Docker Compose
+  hosts: produccion
+
+  tasks:
+    - name: Crear Directorio
+      file:
+        path: "/home/ansible/redmine"
+        state: directory
+    - name: Descargar Imagen
+      shell: curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/redmine/docker-compose.yml > docker-compose.yml
+      args:
+        chdir: "/home/ansible/redmine"
+    - name: Hacer Docker Compose
+      docker_compose:
+        project_src: "/home/ansible/redmine"
+        state: present

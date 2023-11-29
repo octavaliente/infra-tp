@@ -1,0 +1,25 @@
+---
+- name: Instalar Docker con Prerequisitos
+  hosts: produccion
+  user: ansible
+  become: yes
+
+  tasks:
+    - name: Set up repository. Prerequisitos
+      yum:
+       name: yum-utils
+       state: latest
+    - name: Configurando Repo
+      get_url:
+       url: https://download.docker.com/linux/centos/docker-ce.repo
+       dest: /etc/yum.repos.d/docker-ce.repo
+       mode: 0644
+    - name: Instalando Docker
+      yum:
+       name: docker-ce
+       state: present	
+    - name: Iniciando y Habilitando Docker
+      service:
+       name: docker
+       state: started
+       enabled: yes

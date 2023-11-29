@@ -1,0 +1,8 @@
+---
+- name: Play de ping
+  hosts: produccion
+  
+  tasks:
+    - name: hacer un ping
+      shell: echo "Hola"
+

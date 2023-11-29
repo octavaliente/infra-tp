@@ -1,0 +1,13 @@
+---
+- name: Instalacion de Redmine con docker
+  hosts: produccion
+  
+  tasks:
+   - name: Pull de imagen desde Docker Hub
+     docker_image:
+       name: bitnami/redmine:latest
+       source: pull
+   - name: Iniciar Redmine Container
+     shell: sudo  curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/redmine/docker-compose.yml > docker-compose.yml
+            sudo docker compose up -d
+
