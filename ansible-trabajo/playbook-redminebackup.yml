@@ -12,6 +12,6 @@
        register: id_container
      - name: Almacenar id
        set_fact:
-         id_var: "{{ id_container.stdout  }}"
+         id_var: id_container.stdout
      - name: Copiar directorio
-       command: id_var:/bitnami/redmine /home/ansible/redmineBackup
+       command: docker cp 7613a73c57a1:/bitnami/redmine /home/ansible/redmineBackup
