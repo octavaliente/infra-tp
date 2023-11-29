@@ -1,17 +1,17 @@
----
- - name: Realizar BACKUP de Redmine
+--- 
+ - name: Realizar BACKUP de mariaDB 
    hosts: produccion
 
    tasks:
      - name: Crear directorio
        file:
-        path: "/home/ansible/redmineBackup"
+        path: "/home/ansible/mariadbBackup"
         state: directory
      - name: Obtener id del container
-       command: docker ps -qf "ancestor=bitnami/redmine:5"
+       command: docker ps -qf "ancestor=bitnami/mariadb:11.1"
        register: id_container
      - name: Almacenar id
        set_fact:
          id_var: "{{ id_container.stdout }}"
      - name: Copiar directorio
-       command: docker cp {{id_var}}:/bitnami/redmine /home/ansible/redmineBackup
+       command: docker cp {{id_var}}:/bitnami/mariadb /home/ansible/mariadbBackup
