@@ -3,6 +3,3 @@ all:
     produccion:
       hosts:
         vm1:
-    desarrollo:
-       hosts:
-         vm3:
